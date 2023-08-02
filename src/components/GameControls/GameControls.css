@@ -1,0 +1,20 @@
+@import "../../styles/colors.css";
+
+.game-control-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-reset-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.reset-game-button {
+  background-color: var(--secondary-button-color);
+  color: var(--secondary-button-font-color);
+}
+
+.reset-game-button:hover {
+  background-color: var(--secondary-hover-button-color);
+}

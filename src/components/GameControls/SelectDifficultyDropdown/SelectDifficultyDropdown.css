@@ -1,0 +1,8 @@
+.game-dropdown-container {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

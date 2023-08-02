@@ -1,0 +1,14 @@
+@import "../../styles/colors.css";
+
+.tutorial-page-rules-container {
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+.tutorial-page-rules {
+  font-family: "Montserrat", sans-serif;
+  color: var(--primary-button-color);
+  font-size: 1.2rem;
+}

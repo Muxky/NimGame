@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import "./App.css";
+import LandingScreen from "./screens/LandingScreen/LandingScreen";
+import TutorialScreen from "./screens/TutorialScreen/TutorialScreen";
+import GameScreen from "./screens/GameScreen/GameScreen";
 
-function App() {
+const App = () => {
+  const gameRef = useRef(null);
+  const tutorialRef = useRef(null);
+
+  const scrollToGame = () => {
+    gameRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToTutorial = () => {
+    tutorialRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <LandingScreen
+        scrollToGame={scrollToGame}
+        scrollToTutorial={scrollToTutorial}
+      />
+      <div ref={tutorialRef}>
+        <TutorialScreen scrollToGame={scrollToGame} />
+      </div>
+      <div ref={gameRef}>
+        <GameScreen />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
