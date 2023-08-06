@@ -36,6 +36,8 @@ const GameLogic = (
       return 3;
     }
 
+    //If there are 3 remaining Matches, remove 2
+    //If there are 2 remaining Matches, remove 1
     if (remainingMatches <= 3 && remainingMatches !== 1) {
       return remainingMatches - 1;
     }
@@ -43,7 +45,7 @@ const GameLogic = (
     const maxComputerMove = Math.min(3, remainingMatches);
     for (let numToDraw = maxComputerMove; numToDraw > 0; numToDraw--) {
       const remainingAfterMove = remainingMatches - numToDraw;
-      if (remainingAfterMove % 4 === 0) {
+      if (remainingAfterMove % 4 !== 0) {
         return numToDraw;
       }
     }
