@@ -27,7 +27,7 @@ const GameLogic = (
   const handleRemoveMatches = (num) => {
     setMatches((prev) => prev - num);
     setPlayer((prev) => (prev === 1 ? 2 : 1));
-    setMoves((prevMoves) => [...prevMoves, { player: player, num }]);
+    //setMoves((prevMoves) => [...prevMoves, { player: player, num }]);
   };
 
   //Function for difficulty hard, the computer makes a for-win move
@@ -42,13 +42,12 @@ const GameLogic = (
       return remainingMatches - 1;
     }
 
-    const maxComputerMove = Math.min(3, remainingMatches);
-    for (let numToDraw = maxComputerMove; numToDraw > 0; numToDraw--) {
-      const remainingAfterMove = remainingMatches - numToDraw;
-      if (remainingAfterMove % 4 !== 0) {
-        return numToDraw;
-      }
+    //If there are more than 3 Matches, find the best move
+    if (remainingMatches % 4 === 1) {
+      return 3;
     }
+
+    //If there is no winning-move, remove 1 Match
     return 1;
   };
 
