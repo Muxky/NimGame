@@ -1,9 +1,14 @@
 import React from "react";
 import "./TutorialScreen.css";
 import "../../styles/globalStyles.css";
+import { voidFunction } from "../../types";
+
+type TutorialScreenProps = {
+  scrollToGame: voidFunction;
+}
 
 //Represents the entire tutorial screen
-const TutorialScreen = ({ scrollToGame }) => {
+const TutorialScreen = ({ scrollToGame }: TutorialScreenProps) => {
   return (
     <div className="screen-container">
       <h1 className="page-title">Anleitung</h1>
@@ -22,7 +27,7 @@ const TutorialScreen = ({ scrollToGame }) => {
           Um das Spiel noch spannender zu gestalten, kannst du zwischen zwei
           Schwierigkeitsgraden wählen: "leicht" und "schwer".
           <br />
-          Im "leichten" Modus zieht der Computer zufällig zwischen 1 und 3
+          Im 'leichten' Modus zieht der Computer zufällig zwischen 1 und 3
           Streichhölzern. Er agiert nicht gewinnorientiert, sondern macht
           einfach zufällige Züge. Das gibt dir die Möglichkeit, das Spiel zu
           genießen und dich mit den Grundlagen vertraut zu machen.

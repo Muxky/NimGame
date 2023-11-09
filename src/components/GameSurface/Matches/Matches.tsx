@@ -3,8 +3,13 @@ import { ReactComponent as MatchSVG } from "../../../assets/GameMatch.svg";
 import { ReactComponent as BurningMatchSVG } from "../../../assets/GameMatchBurning.svg";
 import "./Matches.css";
 
+type MatchesProps = {
+  matches: number,
+  maxMatches: number
+}
+
 //Representation of the matches
-const Matches = ({ matches, maxMatches }) => {
+const Matches = ({ matches, maxMatches }: MatchesProps) => {
   return (
     <div className="game-matches-row" data-testid="matches-component">
       {Array(maxMatches)

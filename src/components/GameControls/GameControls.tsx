@@ -2,6 +2,16 @@ import React from "react";
 import RemoveMatchButtons from "./RemoveMatchButtons/RemoveMatchButtons";
 import SelectDifficultyDropdown from "./SelectDifficultyDropdown/SelectDifficultyDropdown";
 import "./GameControls.css";
+import { HandleDifficultyFn, Player, RemoveMatchesFn, ResetGameFn } from "../../types";
+
+type GameControlProps = {
+  player: Player ;
+  matches: number;
+  handleRemoveMatches: RemoveMatchesFn;
+  winner: null | Player;
+  resetGame: ResetGameFn;
+  handleDifficultyChange: HandleDifficultyFn;
+}
 
 //Brings together all the necessary components for the controls of the game
 const GameControls = ({
@@ -11,7 +21,7 @@ const GameControls = ({
   winner,
   resetGame,
   handleDifficultyChange,
-}) => {
+}: GameControlProps) => {
   return (
     <div className="game-control-container">
       <RemoveMatchButtons

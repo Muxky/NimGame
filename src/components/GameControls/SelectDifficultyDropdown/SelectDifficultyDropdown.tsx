@@ -1,8 +1,13 @@
 import React from "react";
 import "./SelectDifficultyDropdown.css";
+import { HandleDifficultyFn } from "../../../types";
+
+type DifficultyDropdownProps = {
+  handleDifficultyChange: HandleDifficultyFn;
+}
 
 //Provides the dropdown for the selection of the difficulty level
-const SelectDifficultyDropdown = ({ handleDifficultyChange }) => {
+const SelectDifficultyDropdown = ({ handleDifficultyChange }: DifficultyDropdownProps) => {
   return (
     <div
       className="game-dropdown-container"

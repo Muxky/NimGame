@@ -5,15 +5,16 @@ import TutorialScreen from "./screens/TutorialScreen/TutorialScreen";
 import GameScreen from "./screens/GameScreen/GameScreen";
 
 const App = () => {
-  const gameRef = useRef(null);
-  const tutorialRef = useRef(null);
+  const gameRef = useRef<null | HTMLDivElement>(null);
+  const tutorialRef = useRef<null | HTMLDivElement>(null);
+
 
   const scrollToGame = () => {
-    gameRef.current.scrollIntoView({ behavior: "smooth" });
+    gameRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToTutorial = () => {
-    tutorialRef.current.scrollIntoView({ behavior: "smooth" });
+    tutorialRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -25,7 +26,7 @@ const App = () => {
       <div ref={tutorialRef}>
         <TutorialScreen scrollToGame={scrollToGame} />
       </div>
-      <div ref={gameRef}>
+      <div>
         <GameScreen />
       </div>
     </div>

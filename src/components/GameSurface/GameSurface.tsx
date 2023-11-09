@@ -1,27 +1,27 @@
 import React from "react";
 import GameControls from "../GameControls/GameControls";
-import GameLogic from "../GameLogic/GameLogic";
+import useGameLogic from "../GameLogic/useGameLogic";
 import Matches from "./Matches/Matches";
 import "../../styles/globalStyles.css";
+import { Move } from "../../types";
 
 //Combines game logic and game controls
 const GameSurface = () => {
   const startNumberMatches = 13;
   const beginningPlayer = 1;
-  const initialMovesState = [];
-  const initialDifficulty = 1;
+  const initialMovesState: Move[] = [];
+  const initialDifficulty= 1;
 
   const {
     matches,
     player,
     winner,
-    moves,
     difficulty,
     handleRemoveMatches,
     resetGame,
     getPlayerName,
     handleDifficultyChange,
-  } = GameLogic(
+  } = useGameLogic(
     startNumberMatches,
     beginningPlayer,
     initialMovesState,
@@ -55,8 +55,6 @@ const GameSurface = () => {
         handleRemoveMatches={handleRemoveMatches}
         winner={winner}
         resetGame={resetGame}
-        moves={moves}
-        difficulty={difficulty}
         handleDifficultyChange={handleDifficultyChange}
       />
     </div>

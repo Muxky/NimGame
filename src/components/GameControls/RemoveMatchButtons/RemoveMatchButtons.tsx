@@ -1,5 +1,13 @@
 import React from "react";
 import "./RemoveMatchButtons.css";
+import { Player, RemoveMatchesFn } from "../../../types";
+
+type RemoveMatchProps = {
+  winner: null | Player ;
+  matches: number;
+  player: Player;
+  handleRemoveMatches: RemoveMatchesFn;
+}
 
 //Provides the buttons for drawing matches of different numbers
 const RemoveMatchButtons = ({
@@ -7,7 +15,7 @@ const RemoveMatchButtons = ({
   matches,
   player,
   handleRemoveMatches,
-}) => {
+}:RemoveMatchProps) => {
   return (
     <div className="game-contol-buttons" data-testid="remove-match-buttons">
       {!winner && (

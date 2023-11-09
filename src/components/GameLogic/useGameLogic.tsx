@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
+import { Difficulty, Move, Player } from "../../types";
 
-const GameLogic = (
-  startNumberMatches,
-  beginningPlayer,
-  initialMovesState,
-  initialDifficulty
+const useGameLogic = (
+  startNumberMatches: number,
+  beginningPlayer: Player,
+  initialMovesState: Move[],
+  initialDifficulty: Difficulty
 ) => {
   const [matches, setMatches] = useState(startNumberMatches);
   const [player, setPlayer] = useState(beginningPlayer);
-  const [winner, setWinner] = useState(null);
+  const [winner, setWinner] = useState<null | Player>(null);
   const [moves, setMoves] = useState(initialMovesState);
   const [difficulty, setDifficulty] = useState(initialDifficulty);
 
@@ -24,14 +25,14 @@ const GameLogic = (
   }, [difficulty]);
 
   //Function to execute the player move
-  const handleRemoveMatches = (num) => {
+  const handleRemoveMatches = (num: number) => {
     setMatches((prev) => prev - num);
     setPlayer((prev) => (prev === 1 ? 2 : 1));
     setMoves((prevMoves) => [...prevMoves, { player: player, num }]);
   };
 
   //Function for difficulty hard, the computer makes a for-win move
-  const findBestMove = (remainingMatches) => {
+  const findBestMove = (remainingMatches: number) => {
     if (remainingMatches === 4) {
       return 3;
     }
@@ -52,11 +53,13 @@ const GameLogic = (
 
   //Function to execute the computer move
   const computerMove = () => {
-    let numToDraw;
+    let numToDraw: number;
     if (difficulty === 1) {
       numToDraw = Math.floor(Math.random() * Math.min(3, matches)) + 1;
     } else if (difficulty === 2) {
       numToDraw = findBestMove(matches);
+    } else {
+      throw new Error(`invalid difficulty ${difficulty}`)
     }
     const remainingMatches = matches - numToDraw;
     setMatches(remainingMatches);
@@ -83,7 +86,7 @@ const GameLogic = (
   };
 
   //Function to set the Player/Computer Names
-  const getPlayerName = (player) => {
+  const getPlayerName = (player: Player) => {
     return player === 1 ? "Player 1" : "Computer";
   };
 
@@ -100,4 +103,4 @@ const GameLogic = (
   };
 };
 
-export default GameLogic;
+export default useGameLogic;
