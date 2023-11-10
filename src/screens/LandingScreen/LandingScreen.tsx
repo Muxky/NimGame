@@ -2,11 +2,10 @@ import React from "react";
 import { ReactComponent as NimGameBG } from "../../assets/NimSpielBackground.svg";
 import "./LandingScreen.css";
 import "../../styles/globalStyles.css";
-import { voidFunction } from "../../types";
 
 type LandingScreenProps = {
-  scrollToGame: voidFunction;
-  scrollToTutorial: voidFunction;
+  scrollToGame: () => void;
+  scrollToTutorial: () => void;
 }
 
 //Represents the entire landing screen

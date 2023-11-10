@@ -2,7 +2,7 @@ import React from "react";
 import "./RemoveMatchButtons.css";
 import { Player, RemoveMatchesFn } from "../../../types";
 
-type RemoveMatchProps = {
+type RemoveMatchButtonsProps = {
   winner: null | Player ;
   matches: number;
   player: Player;
@@ -15,26 +15,26 @@ const RemoveMatchButtons = ({
   matches,
   player,
   handleRemoveMatches,
-}:RemoveMatchProps) => {
+}:RemoveMatchButtonsProps) => {
   return (
     <div className="game-contol-buttons" data-testid="remove-match-buttons">
       {!winner && (
         <>
           <button
             onClick={() => handleRemoveMatches(1)}
-            disabled={player === 2 || matches < 1}
+            disabled={player === "Computer" || matches < 1}
           >
             Ziehe 1
           </button>
           <button
             onClick={() => handleRemoveMatches(2)}
-            disabled={player === 2 || matches < 2}
+            disabled={player === "Computer" || matches < 2}
           >
             Ziehe 2
           </button>
           <button
             onClick={() => handleRemoveMatches(3)}
-            disabled={player === 2 || matches < 3}
+            disabled={player === "Computer" || matches < 3}
           >
             Ziehe 3
           </button>

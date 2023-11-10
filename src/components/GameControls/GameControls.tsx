@@ -2,15 +2,15 @@ import React from "react";
 import RemoveMatchButtons from "./RemoveMatchButtons/RemoveMatchButtons";
 import SelectDifficultyDropdown from "./SelectDifficultyDropdown/SelectDifficultyDropdown";
 import "./GameControls.css";
-import { HandleDifficultyFn, Player, RemoveMatchesFn, ResetGameFn } from "../../types";
+import { HandleDifficultyFn, Player, RemoveMatchesFn } from "../../types";
 
 type GameControlProps = {
   player: Player ;
   matches: number;
   handleRemoveMatches: RemoveMatchesFn;
   winner: null | Player;
-  resetGame: ResetGameFn;
-  handleDifficultyChange: HandleDifficultyFn;
+  resetGame: () => void;
+  onDifficultyChange: HandleDifficultyFn;
 }
 
 //Brings together all the necessary components for the controls of the game
@@ -20,7 +20,7 @@ const GameControls = ({
   handleRemoveMatches,
   winner,
   resetGame,
-  handleDifficultyChange,
+  onDifficultyChange,
 }: GameControlProps) => {
   return (
     <div className="game-control-container">
@@ -31,7 +31,7 @@ const GameControls = ({
         handleRemoveMatches={handleRemoveMatches}
       />
       <SelectDifficultyDropdown
-        handleDifficultyChange={handleDifficultyChange}
+        onDifficultyChange={onDifficultyChange}
       />
       <div className="game-reset-button-container">
         <button className="reset-game-button" onClick={() => resetGame()}>

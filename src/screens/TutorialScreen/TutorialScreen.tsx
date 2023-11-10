@@ -1,10 +1,9 @@
 import React from "react";
 import "./TutorialScreen.css";
 import "../../styles/globalStyles.css";
-import { voidFunction } from "../../types";
 
 type TutorialScreenProps = {
-  scrollToGame: voidFunction;
+  scrollToGame: () => void;
 }
 
 //Represents the entire tutorial screen

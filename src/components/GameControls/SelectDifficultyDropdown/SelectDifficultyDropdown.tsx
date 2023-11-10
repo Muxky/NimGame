@@ -3,11 +3,11 @@ import "./SelectDifficultyDropdown.css";
 import { HandleDifficultyFn } from "../../../types";
 
 type DifficultyDropdownProps = {
-  handleDifficultyChange: HandleDifficultyFn;
+  onDifficultyChange: HandleDifficultyFn;
 }
 
 //Provides the dropdown for the selection of the difficulty level
-const SelectDifficultyDropdown = ({ handleDifficultyChange }: DifficultyDropdownProps) => {
+const SelectDifficultyDropdown = ({ onDifficultyChange }: DifficultyDropdownProps) => {
   return (
     <div
       className="game-dropdown-container"
@@ -16,7 +16,7 @@ const SelectDifficultyDropdown = ({ handleDifficultyChange }: DifficultyDropdown
       <label>
         <select
           className="game-dropdown"
-          onChange={(e) => handleDifficultyChange(e.target.value)}
+          onChange={(e) => onDifficultyChange(e.target.value)}
           data-testid="difficulty-select"
         >
           <option disabled className="difficulty-select">

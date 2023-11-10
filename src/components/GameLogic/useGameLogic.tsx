@@ -15,8 +15,8 @@ const useGameLogic = (
 
   //Function to change the difficulty of the computer move
   //1 === easy, 2 === hard
-  const handleDifficultyChange = () => {
-    setDifficulty((prev) => (prev === 1 ? 2 : 1));
+  const onDifficultyChange = () => {
+    setDifficulty((prev) => (prev === "Easy" ? "Hard" : "Easy"));
   };
 
   //When changing the difficulty level restart the game
@@ -27,7 +27,7 @@ const useGameLogic = (
   //Function to execute the player move
   const handleRemoveMatches = (num: number) => {
     setMatches((prev) => prev - num);
-    setPlayer((prev) => (prev === 1 ? 2 : 1));
+    setPlayer((prev) => (prev === "Human" ? "Computer" : "Human"));
     setMoves((prevMoves) => [...prevMoves, { player: player, num }]);
   };
 
@@ -54,25 +54,25 @@ const useGameLogic = (
   //Function to execute the computer move
   const computerMove = () => {
     let numToDraw: number;
-    if (difficulty === 1) {
+    if (difficulty === "Easy") {
       numToDraw = Math.floor(Math.random() * Math.min(3, matches)) + 1;
-    } else if (difficulty === 2) {
+    } else if (difficulty === "Hard") {
       numToDraw = findBestMove(matches);
     } else {
       throw new Error(`invalid difficulty ${difficulty}`)
     }
     const remainingMatches = matches - numToDraw;
     setMatches(remainingMatches);
-    setPlayer(1);
-    setMoves((prevMoves) => [...prevMoves, { player: 2, num: numToDraw }]);
+    setPlayer("Human");
+    setMoves((prevMoves) => [...prevMoves, { player: "Computer", num: numToDraw }]);
   };
 
   //Observation if the game is over and who has won
   //If the game is not finished and its the computers turn, the computer moves with a delay
   useEffect(() => {
     if (matches === 0) {
-      setWinner(player === 1 ? 1 : 2);
-    } else if (player === 2) {
+      setWinner(player === "Human" ? "Human" : "Computer");
+    } else if (player === "Computer") {
       setTimeout(computerMove, 800);
     }
   }, [matches, player]);
@@ -85,11 +85,6 @@ const useGameLogic = (
     setMoves(initialMovesState);
   };
 
-  //Function to set the Player/Computer Names
-  const getPlayerName = (player: Player) => {
-    return player === 1 ? "Player 1" : "Computer";
-  };
-
   return {
     matches,
     player,
@@ -98,8 +93,7 @@ const useGameLogic = (
     difficulty,
     handleRemoveMatches,
     resetGame,
-    getPlayerName,
-    handleDifficultyChange,
+    onDifficultyChange,
   };
 };
 

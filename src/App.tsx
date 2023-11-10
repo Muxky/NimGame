@@ -26,7 +26,7 @@ const App = () => {
       <div ref={tutorialRef}>
         <TutorialScreen scrollToGame={scrollToGame} />
       </div>
-      <div>
+      <div ref={gameRef}>
         <GameScreen />
       </div>
     </div>

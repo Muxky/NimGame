@@ -8,9 +8,9 @@ import { Move } from "../../types";
 //Combines game logic and game controls
 const GameSurface = () => {
   const startNumberMatches = 13;
-  const beginningPlayer = 1;
+  const beginningPlayer = "Human";
   const initialMovesState: Move[] = [];
-  const initialDifficulty= 1;
+  const initialDifficulty= "Easy";
 
   const {
     matches,
@@ -19,8 +19,7 @@ const GameSurface = () => {
     difficulty,
     handleRemoveMatches,
     resetGame,
-    getPlayerName,
-    handleDifficultyChange,
+    onDifficultyChange,
   } = useGameLogic(
     startNumberMatches,
     beginningPlayer,
@@ -32,7 +31,7 @@ const GameSurface = () => {
     <div className="screen-container" data-testid="game-surface">
       <h1
         className="page-title"
-        style={{ color: difficulty === 2 ? "#b34947" : "" }}
+        style={{ color: difficulty === "Hard" ? "#b34947" : "" }}
       >
         Impartial Game
       </h1>
@@ -44,9 +43,9 @@ const GameSurface = () => {
       <h3 className="page-text">Übrige Streichhölzer {matches}</h3>
       <div className="page-text">
         {winner ? (
-          <h3>Gewinner: {getPlayerName(winner)}</h3>
+          <h3>Gewinner: {(winner)}</h3>
         ) : (
-          <h3>Spieler am Zug: {getPlayerName(player)}</h3>
+          <h3>Spieler am Zug: {(player)}</h3>
         )}
       </div>
       <GameControls
@@ -55,7 +54,7 @@ const GameSurface = () => {
         handleRemoveMatches={handleRemoveMatches}
         winner={winner}
         resetGame={resetGame}
-        handleDifficultyChange={handleDifficultyChange}
+        onDifficultyChange={onDifficultyChange}
       />
     </div>
   );
